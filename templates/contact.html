@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <p>이메일: {{ email }}</p>
+  <p>GitHub: <a class="project-link" href="{{ github }}" target="_blank" rel="noopener noreferrer">{{ github }}</a></p>
+  <p>{{ goal }}</p>
+{% endblock %}

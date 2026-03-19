@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <p class="pill">{{ focus }}</p>
+  <ul>
+    {% for item in items %}
+      <li>{{ item }}</li>
+    {% endfor %}
+  </ul>
+  <p>{{ interests }}</p>
+{% endblock %}

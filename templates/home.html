@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% for line in intro %}
+    <p>{{ line }}</p>
+  {% endfor %}
+  <ul>
+    {% for item in principles %}
+      <li>{{ item }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
