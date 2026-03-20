@@ -60,3 +60,8 @@ def contact():
         github=contact_data["github"],
         goal=contact_data["goal"],
     )
+
+
+@bp.get("/about")
+def about():
+    pass
