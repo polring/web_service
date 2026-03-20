@@ -4,6 +4,7 @@ import os
 import pkgutil
 
 from blueprints.main import bp as main_bp
+from blueprints.api import bp as api_bp
 
 
 def load_plugins(app: Flask) -> None:
@@ -29,6 +30,7 @@ def load_plugins(app: Flask) -> None:
 def create_app() -> Flask:
     app = Flask(__name__)
     app.register_blueprint(main_bp)
+    app.register_blueprint(api_bp)
 
     load_plugins(app)
     return app

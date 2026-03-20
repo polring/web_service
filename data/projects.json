@@ -1,18 +1,22 @@
 [
   {
+    "id": "1",
     "title": "Flask 소개 페이지",
     "description": "기본 라우팅과 디자인을 활용해 제작한 첫 페이지입니다."
   },
   {
+    "id": "2",
     "title": "Music 프로젝트",
     "description": "음악 관련 프로젝트를 진행 중입니다.",
     "link": "https://github.com/your-id/music-project"
   },
   {
+    "id": "3",
     "title": "업무 자동화 스크립트",
     "description": "반복 작업을 줄이기 위한 자동화 아이디어를 정리 중입니다."
   },
   {
+    "id": "4",
     "title": "오픈소스 참여 계획",
     "description": "문서 기여부터 시작해 점진적으로 참여 범위를 넓힐 예정입니다."
   }
