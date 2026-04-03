@@ -1,21 +1,20 @@
 from flask import Blueprint, render_template
-import json
-from pathlib import Path
+
+from services.json_store import (
+    ABOUT_JSON,
+    CONTACT_JSON,
+    PROFILE_JSON,
+    PROJECTS_JSON,
+    SKILLS_JSON,
+    load_json,
+)
 
 bp = Blueprint("main", __name__)
-BASE_DIR = Path(__file__).resolve().parents[1]
-DATA_DIR = BASE_DIR / "data"
-
-
-def load_json(filename: str):
-    path = DATA_DIR / filename
-    with path.open(encoding="utf-8") as file:
-        return json.load(file)
 
 
 @bp.get("/")
 def home():
-    profile = load_json("profile.json")
+    profile = load_json(PROFILE_JSON)
     return render_template(
         "home.html",
         title=f"안녕하세요, 저는 {profile['name']}입니다.",
@@ -27,7 +26,7 @@ def home():
 
 @bp.get("/skills")
 def skills():
-    skills_data = load_json("skills.json")
+    skills_data = load_json(SKILLS_JSON)
     return render_template(
         "skills.html",
         title="기술 스택과 관심 분야",
@@ -40,7 +39,7 @@ def skills():
 
 @bp.get("/projects")
 def projects():
-    projects_data = load_json("projects.json")
+    projects_data = load_json(PROJECTS_JSON)
     return render_template(
         "projects.html",
         title="미니 프로젝트 아카이브",
@@ -51,7 +50,7 @@ def projects():
 
 @bp.get("/contact")
 def contact():
-    contact_data = load_json("contact.json")
+    contact_data = load_json(CONTACT_JSON)
     return render_template(
         "contact.html",
         title="연락 및 목표",
@@ -64,4 +63,11 @@ def contact():
 
 @bp.get("/about")
 def about():
-    pass
+    about_data = load_json(ABOUT_JSON)
+    return render_template(
+        "about.html",
+        title="소개",
+        lead="저를 조금 더 알아가실 수 있는 페이지입니다.",
+        bio=about_data["bio"],
+        highlights=about_data["highlights"],
+    )
