@@ -11,12 +11,14 @@ from services.json_store import (
 
 bp = Blueprint("api", __name__, url_prefix="/api")
 
+NOT_FOUND_PAYLOAD = {"error": "Not found"}
+
 
 def _json_list_item_or_404(filename: str, item_id: str):
     items = load_json(filename)
     item = find_item_by_id(items, item_id)
     if item is None:
-        return jsonify({"error": "Not found"}), 404
+        return jsonify(NOT_FOUND_PAYLOAD), 404
     return jsonify(item)
 
 
