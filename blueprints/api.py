@@ -1,64 +1,48 @@
 """JSON API - 외부에서 데이터 조회"""
-import json
-from pathlib import Path
-
 from flask import Blueprint, jsonify
 
+from services.json_store import (
+    NOTES_JSON,
+    PROFILE_JSON,
+    PROJECTS_JSON,
+    find_item_by_id,
+    load_json,
+)
+
 bp = Blueprint("api", __name__, url_prefix="/api")
-BASE_DIR = Path(__file__).resolve().parents[1]
-DATA_DIR = BASE_DIR / "data"
 
 
-def load_json(filename: str):
-    path = DATA_DIR / filename
-    with path.open(encoding="utf-8") as f:
-        return json.load(f)
+def _json_list_item_or_404(filename: str, item_id: str):
+    items = load_json(filename)
+    item = find_item_by_id(items, item_id)
+    if item is None:
+        return jsonify({"error": "Not found"}), 404
+    return jsonify(item)
 
 
-def _find_by_id(items: list, id: str):
-    """id로 항목 조회"""
-    for item in items:
-        if str(item.get("id")) == str(id):
-            return item
-    return None
-
-
-# 기능 1: GET /api/profile
 @bp.get("/profile")
 def get_profile():
-    profile = load_json("profile.json")
+    profile = load_json(PROFILE_JSON)
     return jsonify(profile)
 
 
-# 기능 2: GET /api/projects
 @bp.get("/projects")
 def get_projects():
-    projects = load_json("projects.json")
+    projects = load_json(PROJECTS_JSON)
     return jsonify(projects)
 
 
-# 기능 3: GET /api/projects/<id>
-@bp.get("/projects/<id>")
-def get_project(id):
-    projects = load_json("projects.json")
-    project = _find_by_id(projects, id)
-    if project is None:
-        return jsonify({"error": "Not found"}), 404
-    return jsonify(project)
+@bp.get("/projects/<item_id>")
+def get_project(item_id):
+    return _json_list_item_or_404(PROJECTS_JSON, item_id)
 
 
-# 기능 4: GET /api/notes
 @bp.get("/notes")
 def get_notes():
-    notes = load_json("notes.json")
+    notes = load_json(NOTES_JSON)
     return jsonify(notes)
 
 
-# 기능 5: GET /api/notes/<id>
-@bp.get("/notes/<id>")
-def get_note(id):
-    notes = load_json("notes.json")
-    note = _find_by_id(notes, id)
-    if note is None:
-        return jsonify({"error": "Not found"}), 404
-    return jsonify(note)
+@bp.get("/notes/<item_id>")
+def get_note(item_id):
+    return _json_list_item_or_404(NOTES_JSON, item_id)
