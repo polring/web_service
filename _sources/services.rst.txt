@@ -1,0 +1,21 @@
+services package
+================
+
+Submodules
+----------
+
+services.json\_store module
+---------------------------
+
+.. automodule:: services.json_store
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: services
+   :members:
+   :undoc-members:
+   :show-inheritance:

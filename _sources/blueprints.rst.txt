@@ -1,0 +1,29 @@
+blueprints package
+==================
+
+Submodules
+----------
+
+blueprints.api module
+---------------------
+
+.. automodule:: blueprints.api
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+blueprints.main module
+----------------------
+
+.. automodule:: blueprints.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: blueprints
+   :members:
+   :undoc-members:
+   :show-inheritance:
