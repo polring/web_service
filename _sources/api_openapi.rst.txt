@@ -1,0 +1,22 @@
+OpenAPI (Flasgger) 스펙 파일
+=============================
+
+Flask 핸들러 docstring 안에 YAML을 넣으면 Sphinx(Napoleon)가 같은 문자열을 reStructuredText로
+해석하려다 빌드 경고나 오류가 날 수 있습니다. 그래서 이 프로젝트는 OpenAPI 조각을 YAML 파일로
+분리하고, ``flasgger.swag_from`` 으로 라우트에 붙입니다.
+
+파일 위치
+---------
+
+``app/blueprints/swagger/``
+
+* ``profile_get.yml`` — ``GET /api/profile``
+* ``projects_list.yml`` — ``GET /api/projects``
+* ``project_get.yml`` — ``GET /api/projects/<item_id>``
+* ``notes_list.yml`` — ``GET /api/notes``
+* ``note_get.yml`` — ``GET /api/notes/<item_id>``
+
+로컬에서 Swagger UI
+--------------------
+
+앱 실행 후 브라우저에서 ``/apidocs/`` 를 열면 **Try it out** 으로 위 엔드포인트를 호출할 수 있습니다.

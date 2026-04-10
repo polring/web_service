@@ -1,0 +1,34 @@
+아키텍처 개요
+==============
+
+디렉터리 구조 (요약)
+--------------------
+
+.. code-block:: text
+
+   app/
+   ├── app.py              # Flask 앱 팩토리, 플러그인 로드, Flasgger 초기화
+   ├── blueprints/         # main(페이지), api(JSON)
+   ├── services/           # json_store — data/*.json 접근
+   ├── data/               # 프로필, 프로젝트, 노트 등 JSON 데이터
+   ├── templates/          # Jinja2
+   └── plugins/            # 선택적 확장 모듈
+
+요청 흐름
+---------
+
+#. 브라우저가 ``main`` 블루프린트 라우트를 호출하면 ``services.json_store`` 로 JSON을 읽고 템플릿을 렌더링합니다.
+#. ``/api/*`` 는 ``api`` 블루프린트가 동일한 저장소에서 읽어 ``application/json`` 으로 응답합니다.
+#. 상세 API(목록 내 id)는 공통 헬퍼로 404 시 ``{"error": "Not found"}`` 를 반환합니다.
+
+플러그인
+--------
+
+``load_plugins`` 는 ``app/plugins`` 아래 모듈을 찾아 ``register(app)`` 또는 ``bp`` 블루프린트를 등록합니다.
+``PLUGINS=mod1,mod2`` 로 로드할 모듈을 제한할 수 있습니다.
+
+문서 & 공개 API
+---------------
+
+* **Sphinx**: 코드 docstring → 정적 HTML (본 사이트).
+* **Flasgger**: ``app/blueprints/swagger/*.yml`` + ``swag_from`` → Swagger 2.0 UI (docstring과 분리).

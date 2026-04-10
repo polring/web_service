@@ -1,105 +1,198 @@
+
+
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<html lang="en" data-content_root="./">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flask 포트폴리오 &amp; JSON API &mdash; Flask Portfolio &amp; API 문서</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
 
-    <title>opensource_subject documentation &#8212; opensource_subject  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
-    <script src="_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+  
+    <link rel="canonical" href="https://polring.github.io/web_service/index.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
+    <link rel="next" title="설치 및 실행" href="setup_run.html" /> 
+</head>
 
-  
-  
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
 
-  </head><body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
           
-
-          <div class="body" role="main">
-            
-  <section id="opensource-subject-documentation">
-<h1>opensource_subject documentation<a class="headerlink" href="#opensource-subject-documentation" title="Link to this heading">¶</a></h1>
-<p>Add your content using <code class="docutils literal notranslate"><span class="pre">reStructuredText</span></code> syntax. See the
-<a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html">reStructuredText</a>
-documentation for details.</p>
-<div class="toctree-wrapper compound">
+          
+          <a href="#" class="icon icon-home">
+            Flask Portfolio & API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
 </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">가이드</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup_run.html">설치 및 실행</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">아키텍처 개요</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_openapi.html">OpenAPI (Flasgger) 스펙 파일</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">코드 레퍼런스 (autodoc)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">패키지·모듈 레퍼런스</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Flask Portfolio & API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Flask 포트폴리오 &amp; JSON API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="flask-json-api">
+<h1>Flask 포트폴리오 &amp; JSON API<a class="headerlink" href="#flask-json-api" title="Link to this heading"></a></h1>
+<p><strong>Flask</strong> 기반 개인 포트폴리오 웹앱과 <strong>JSON 조회 API**를 제공합니다. 데이터는 ``app/data/*.json`` 에 두고,
+Jinja2 템플릿으로 페이지를 렌더링합니다. API는 **Flasgger</strong> 로 OpenAPI(Swagger UI) 문서를 노출합니다.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>이 사이트는 <strong>Sphinx autodoc</strong> 으로 Python 소스의 <strong>docstring</strong> 에서 생성되었습니다.
+배포: <a class="reference external" href="https://polring.github.io/web_service/">GitHub Pages</a> (<code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> 브랜치).</p>
+</div>
+<section id="id1">
+<h2>주요 기능<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>페이지</strong>: 홈, 기술, 프로젝트, 연락, 소개 (<code class="docutils literal notranslate"><span class="pre">blueprints.main</span></code>)</p></li>
+<li><p><strong>API</strong>: <code class="docutils literal notranslate"><span class="pre">/api/profile</span></code>, <code class="docutils literal notranslate"><span class="pre">/api/projects</span></code>, <code class="docutils literal notranslate"><span class="pre">/api/projects/&lt;id&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">/api/notes</span></code>, … (<code class="docutils literal notranslate"><span class="pre">blueprints.api</span></code>)</p></li>
+<li><p><strong>데이터 접근</strong>: <code class="docutils literal notranslate"><span class="pre">services.json_store</span></code> — JSON 파일 로드 및 id 검색</p></li>
+<li><p><strong>플러그인</strong>: <code class="docutils literal notranslate"><span class="pre">app/plugins</span></code> 디렉터리 동적 로드 (<code class="docutils literal notranslate"><span class="pre">PLUGINS</span></code> 환경 변수)</p></li>
+<li><p><strong>API 문서(UI)</strong>: 로컬 실행 시 <code class="docutils literal notranslate"><span class="pre">/apidocs/</span></code> (Flasgger)</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>문서 목차<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">가이드</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup_run.html">설치 및 실행</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup_run.html#id2">요구 사항</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_run.html#id3">의존성 설치</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_run.html#id4">앱 실행</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_run.html#flasgger-swagger-ui">Flasgger (Swagger UI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_run.html#sphinx-html">Sphinx HTML 빌드</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_run.html#id5">테스트</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">아키텍처 개요</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#id2">디렉터리 구조 (요약)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#id3">요청 흐름</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#id4">플러그인</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#api">문서 &amp; 공개 API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api_openapi.html">OpenAPI (Flasgger) 스펙 파일</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api_openapi.html#id1">파일 위치</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_openapi.html#swagger-ui">로컬에서 Swagger UI</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">코드 레퍼런스 (autodoc)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">패키지·모듈 레퍼런스</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="app.html"><code class="docutils literal notranslate"><span class="pre">app</span></code> 모듈 (애플리케이션 팩토리)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="app.html#app.create_app"><code class="docutils literal notranslate"><span class="pre">create_app()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="app.html#app.load_plugins"><code class="docutils literal notranslate"><span class="pre">load_plugins()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="blueprints.html">blueprints package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="blueprints.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="blueprints.html#module-blueprints.api">blueprints.api module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="blueprints.html#module-blueprints.main">blueprints.main module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="blueprints.html#module-blueprints">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html">plugins package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugins.html#module-plugins">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="services.html">services package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="services.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services.html#module-services.json_store">services.json_store module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="services.html#module-services">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="id3">
+<h2>색인 &amp; 검색<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
 </section>
 
 
+           </div>
           </div>
-          
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="setup_run.html" class="btn btn-neutral float-right" title="설치 및 실행" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, minje.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="#">opensource_subject</a></h1>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
 
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="#">Documentation overview</a><ul>
-  </ul></li>
-</ul>
-</div>
-<search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &#169;2026, minje.
-      
-      |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
-      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
-      
-      |
-      <a href="_sources/index.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+</body>
 </html>

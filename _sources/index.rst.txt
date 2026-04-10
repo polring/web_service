@@ -1,17 +1,43 @@
-.. opensource_subject documentation master file, created by
-   sphinx-quickstart on Fri Apr 10 09:41:03 2026.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Flask 포트폴리오 & JSON API
+============================
 
-opensource_subject documentation
-================================
+**Flask** 기반 개인 포트폴리오 웹앱과 **JSON 조회 API**를 제공합니다. 데이터는 ``app/data/*.json`` 에 두고,
+Jinja2 템플릿으로 페이지를 렌더링합니다. API는 **Flasgger** 로 OpenAPI(Swagger UI) 문서를 노출합니다.
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+.. note::
 
+   이 사이트는 **Sphinx autodoc** 으로 Python 소스의 **docstring** 에서 생성되었습니다.
+   배포: `GitHub Pages <https://polring.github.io/web_service/>`__ (``gh-pages`` 브랜치).
+
+주요 기능
+---------
+
+* **페이지**: 홈, 기술, 프로젝트, 연락, 소개 (``blueprints.main``)
+* **API**: ``/api/profile``, ``/api/projects``, ``/api/projects/<id>``, ``/api/notes``, … (``blueprints.api``)
+* **데이터 접근**: ``services.json_store`` — JSON 파일 로드 및 id 검색
+* **플러그인**: ``app/plugins`` 디렉터리 동적 로드 (``PLUGINS`` 환경 변수)
+* **API 문서(UI)**: 로컬 실행 시 ``/apidocs/`` (Flasgger)
+
+문서 목차
+---------
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: 가이드
 
+   setup_run
+   architecture
+   api_openapi
+
+.. toctree::
+   :maxdepth: 3
+   :caption: 코드 레퍼런스 (autodoc)
+
+   modules
+
+색인 & 검색
+-----------
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

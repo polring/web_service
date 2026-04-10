@@ -1,100 +1,155 @@
+
+
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<html lang="en" data-content_root="./">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>app 모듈 (애플리케이션 팩토리) &mdash; Flask Portfolio &amp; API 문서</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
 
-    <title>app module &#8212; opensource_subject  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
-    <script src="_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+  
+    <link rel="canonical" href="https://polring.github.io/web_service/app.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
+    <link rel="next" title="blueprints package" href="blueprints.html" />
+    <link rel="prev" title="패키지·모듈 레퍼런스" href="modules.html" /> 
+</head>
 
-  
-  
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
 
-  </head><body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
           
+          
+          <a href="index.html" class="icon icon-home">
+            Flask Portfolio & API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">가이드</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup_run.html">설치 및 실행</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">아키텍처 개요</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_openapi.html">OpenAPI (Flasgger) 스펙 파일</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">코드 레퍼런스 (autodoc)</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">패키지·모듈 레퍼런스</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">app</span></code> 모듈 (애플리케이션 팩토리)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.create_app"><code class="docutils literal notranslate"><span class="pre">create_app()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.load_plugins"><code class="docutils literal notranslate"><span class="pre">load_plugins()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="blueprints.html">blueprints package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html">plugins package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="services.html">services package</a></li>
+</ul>
+</li>
+</ul>
 
-          <div class="body" role="main">
-            
-  <section id="app-module">
-<h1>app module<a class="headerlink" href="#app-module" title="Link to this heading">¶</a></h1>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Flask Portfolio & API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">패키지·모듈 레퍼런스</a></li>
+      <li class="breadcrumb-item active"><code class="docutils literal notranslate"><span class="pre">app</span></code> 모듈 (애플리케이션 팩토리)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/app.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="app">
+<h1><code class="docutils literal notranslate"><span class="pre">app</span></code> 모듈 (애플리케이션 팩토리)<a class="headerlink" href="#app" title="Link to this heading"></a></h1>
+<p>Flask 앱 생성, 블루프린트 등록, 플러그인 로드, Flasgger(Swagger UI) 초기화를 담당합니다.</p>
+<p id="module-app">Flask 애플리케이션 진입점 및 팩토리.</p>
+<p><code class="docutils literal notranslate"><span class="pre">create_app()</span></code> 으로 앱 인스턴스를 만들고, <code class="docutils literal notranslate"><span class="pre">main</span></code> / <code class="docutils literal notranslate"><span class="pre">api</span></code> 블루프린트와
+선택 플러그인, Flasgger(Swagger UI)를 등록합니다.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="app.create_app">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">create_app</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://flask.palletsprojects.com/en/stable/api/#flask.Flask" title="(in Flask v3.1.x)"><span class="pre">Flask</span></a></span></span><a class="reference internal" href="_modules/app.html#create_app"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.create_app" title="Link to this definition"></a></dt>
+<dd><p>Flask 앱을 생성하고 확장(블루프린트·플러그인·Flasgger)을 등록합니다.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>설정이 끝난 <code class="docutils literal notranslate"><span class="pre">Flask</span></code> 인스턴스.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.load_plugins">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">load_plugins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://flask.palletsprojects.com/en/stable/api/#flask.Flask" title="(in Flask v3.1.x)"><span class="pre">Flask</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/app.html#load_plugins"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.load_plugins" title="Link to this definition"></a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">app/plugins</span></code> 패키지 아래 모듈을 동적으로 로드합니다.</p>
+<p>각 모듈에 <code class="docutils literal notranslate"><span class="pre">register(app)</span></code> 이 있으면 호출하고, 없고 <code class="docutils literal notranslate"><span class="pre">bp</span></code> 가 있으면
+블루프린트로 등록합니다. <code class="docutils literal notranslate"><span class="pre">PLUGINS=a,b</span></code> 로 로드할 모듈 이름을 제한할 수 있습니다.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>app</strong> – Flask 애플리케이션 인스턴스.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 
+           </div>
           </div>
-          
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="패키지·모듈 레퍼런스" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="blueprints.html" class="btn btn-neutral float-right" title="blueprints package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, minje.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">opensource_subject</a></h1>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
 
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  </ul></li>
-</ul>
-</div>
-<search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &#169;2026, minje.
-      
-      |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
-      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
-      
-      |
-      <a href="_sources/app.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+</body>
 </html>

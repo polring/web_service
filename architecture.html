@@ -1,0 +1,154 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>아키텍처 개요 &mdash; Flask Portfolio &amp; API 문서</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+    <link rel="canonical" href="https://polring.github.io/web_service/architecture.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="OpenAPI (Flasgger) 스펙 파일" href="api_openapi.html" />
+    <link rel="prev" title="설치 및 실행" href="setup_run.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Flask Portfolio & API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">가이드</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup_run.html">설치 및 실행</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">아키텍처 개요</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">디렉터리 구조 (요약)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">요청 흐름</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">플러그인</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api">문서 &amp; 공개 API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api_openapi.html">OpenAPI (Flasgger) 스펙 파일</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">코드 레퍼런스 (autodoc)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">패키지·모듈 레퍼런스</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Flask Portfolio & API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">아키텍처 개요</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/architecture.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>아키텍처 개요<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<section id="id2">
+<h2>디렉터리 구조 (요약)<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>app/
+├── app.py              # Flask 앱 팩토리, 플러그인 로드, Flasgger 초기화
+├── blueprints/         # main(페이지), api(JSON)
+├── services/           # json_store — data/*.json 접근
+├── data/               # 프로필, 프로젝트, 노트 등 JSON 데이터
+├── templates/          # Jinja2
+└── plugins/            # 선택적 확장 모듈
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>요청 흐름<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>브라우저가 <code class="docutils literal notranslate"><span class="pre">main</span></code> 블루프린트 라우트를 호출하면 <code class="docutils literal notranslate"><span class="pre">services.json_store</span></code> 로 JSON을 읽고 템플릿을 렌더링합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/api/*</span></code> 는 <code class="docutils literal notranslate"><span class="pre">api</span></code> 블루프린트가 동일한 저장소에서 읽어 <code class="docutils literal notranslate"><span class="pre">application/json</span></code> 으로 응답합니다.</p></li>
+<li><p>상세 API(목록 내 id)는 공통 헬퍼로 404 시 <code class="docutils literal notranslate"><span class="pre">{&quot;error&quot;:</span> <span class="pre">&quot;Not</span> <span class="pre">found&quot;}</span></code> 를 반환합니다.</p></li>
+</ol>
+</section>
+<section id="id4">
+<h2>플러그인<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">load_plugins</span></code> 는 <code class="docutils literal notranslate"><span class="pre">app/plugins</span></code> 아래 모듈을 찾아 <code class="docutils literal notranslate"><span class="pre">register(app)</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">bp</span></code> 블루프린트를 등록합니다.
+<code class="docutils literal notranslate"><span class="pre">PLUGINS=mod1,mod2</span></code> 로 로드할 모듈을 제한할 수 있습니다.</p>
+</section>
+<section id="api">
+<h2>문서 &amp; 공개 API<a class="headerlink" href="#api" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Sphinx</strong>: 코드 docstring → 정적 HTML (본 사이트).</p></li>
+<li><p><strong>Flasgger</strong>: <code class="docutils literal notranslate"><span class="pre">app/blueprints/swagger/*.yml</span></code> + <code class="docutils literal notranslate"><span class="pre">swag_from</span></code> → Swagger 2.0 UI (docstring과 분리).</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="setup_run.html" class="btn btn-neutral float-left" title="설치 및 실행" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api_openapi.html" class="btn btn-neutral float-right" title="OpenAPI (Flasgger) 스펙 파일" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, minje.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
